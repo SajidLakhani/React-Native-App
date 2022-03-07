@@ -1,41 +1,49 @@
 import React from 'react';
 import { View, TextInput , Text , TouchableOpacity} from "react-native";
-import  Switch from '../components/Switch';
 import styles from '../assets/Styles'
+import Pickers from './Pickers';
 
-const Login = ({navigation}) => {
+const Signup = ({navigation}) => {
     const [text, onChangeText] = React.useState(null);
+    const [email, onChangeEmail] = React.useState(null);
     const [number, onChangeNumber] = React.useState(null);
     return (
         <View style = {styles.loginContainer}>
              <TouchableOpacity onPress={() => navigation.navigate('Home')}>
             <Text style = {styles.cross}>X</Text>
             </TouchableOpacity>
-            <Text style = {styles.loginh1}>Login</Text>
+            <Text style = {styles.loginh1}>Get Started</Text>
         <TextInput
         placeholderTextColor = "#6c022a"
           style={styles.input}
           onChangeText={onChangeText}
           value={text}
-          placeholder="Enter Number"
-          keyboardType="numeric"
+          placeholder="Enter Name"
+        />
+           <TextInput
+        placeholderTextColor = "#6c022a"
+          style={styles.input}
+          onChangeText={onChangeEmail}
+          value={email}
+          placeholder="Enter Email"
         />
         <TextInput
         placeholderTextColor = "#6c022a"
           style={styles.input}
           onChangeText={onChangeNumber}
           value={number}
-          placeholder="Enter Password"
+          placeholder="Enter Number"
           keyboardType="numeric"
         />
-        <Switch/>
-        <TouchableOpacity>
+        <Pickers/>
+        <TouchableOpacity onPress={() => navigation.navigate('Congrats')}>
            <View style={styles.loginBtn2}>
-      <Text style={styles.title}>Login</Text>
+      <Text style={styles.title}>Confirm</Text>
     </View>
     </TouchableOpacity>
+    <Text style = {styles.confirm}> By Confirming you agree to all <Text style = {styles.span}>terms</Text></Text>
       </View>
     )
 };
 
-export default Login;
+export default Signup;
